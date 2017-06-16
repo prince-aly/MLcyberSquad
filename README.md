@@ -19,8 +19,9 @@ How to use
 
 ### Building and running
 
-1. Run `stack build`
-2. Run `stack exec cyber-exe`
+1. Run `stack solver --update-config`
+2. Run `stack build`
+3. Run `stack exec cyber-exe`
 
 ### Testing
 
@@ -29,3 +30,23 @@ How to use
 ### Compile Documentation
 
 1. Run `stack haddock`
+
+Database
+--------
+
+### DARPA File System Configuration
+
+please configure the database files in a folder with these names
+
+- DARPA 1999 - Week 1 - Monday - inside.tcpdump
+- DARPA 1999 - Week 1 - Monday - outside.tcpdump
+- DARPA 1999 - Week 1 - Tuesday - inside.tcpdump
+- DARPA 1999 - Week 1 - Tuesday - outside.tcpdump
+- DARPA 1999 - Week 1 - Wednesday - inside.tcpdump
+- DARPA 1999 - Week 1 - Wednesday - outside.tcpdump
+- DARPA 1999 - Week 1 - Thursday - inside.tcpdump
+- DARPA 1999 - Week 1 - Thursday - outside.tcpdump
+- DARPA 1999 - Week 1 - Friday - inside.tcpdump
+- DARPA 1999 - Week 1 - Friday - outside.tcpdump
+
+**FIXME**: for now, only having exacly these files and all of these files will cause the `getDatasetReference` function from DARPA.Access to verify the file path given.

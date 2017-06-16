@@ -15,9 +15,19 @@ cabal-version:          >= 1.10
 
 library
     hs-source-dirs:     src
-    exposed-modules:    ANN.Simple
+    exposed-modules:    ANN.Simple,
+                        DARPA.Access
     build-depends:      base >= 4.7 && < 5,
-                        random
+                        random,
+                        pcap,
+                        unix-time,
+                        byline,
+                        text,
+                        directory,
+                        network,
+                        network-house,
+                        bytestring,
+                        array
     default-language:   Haskell2010
 
 executable cyber-exe
