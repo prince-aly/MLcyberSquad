@@ -16,6 +16,7 @@ How to use
 1. Clone from link provided on github
 2. Name folder that it will be placed in `cyber` just for simplicity (it doesn't have to be)
 3. get stack ([instructions](https://docs.haskellstack.org/en/stable/README/))
+4. run `stack setup` on project
 
 ### Building and running
 

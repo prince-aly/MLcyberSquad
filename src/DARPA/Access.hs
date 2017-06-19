@@ -42,17 +42,17 @@ getDatasetReference = runByline $ do
             else return (Left "That Path does not exist.")
 
 datasetFiles :: [FilePath]
-datasetFiles = [
-    "DARPA 1999 - Week 1 - Monday - inside.tcpdump",
-    "DARPA 1999 - Week 1 - Monday - outside.tcpdump",
-    "DARPA 1999 - Week 1 - Tuesday - inside.tcpdump",
-    "DARPA 1999 - Week 1 - Tuesday - outside.tcpdump",
-    "DARPA 1999 - Week 1 - Wednesday - inside.tcpdump",
-    "DARPA 1999 - Week 1 - Wednesday - outside.tcpdump",
-    "DARPA 1999 - Week 1 - Thursday - inside.tcpdump",
-    "DARPA 1999 - Week 1 - Thursday - outside.tcpdump",
-    "DARPA 1999 - Week 1 - Friday - inside.tcpdump",
-    "DARPA 1999 - Week 1 - Friday - outside.tcpdump"]
+datasetFiles = ["DARPA 1999 - Week 1 - Monday - inside.tcpdump"]
+    -- "DARPA 1999 - Week 1 - Monday - inside.tcpdump",
+    -- "DARPA 1999 - Week 1 - Monday - outside.tcpdump",
+    -- "DARPA 1999 - Week 1 - Tuesday - inside.tcpdump",
+    -- "DARPA 1999 - Week 1 - Tuesday - outside.tcpdump",
+    -- "DARPA 1999 - Week 1 - Wednesday - inside.tcpdump",
+    -- "DARPA 1999 - Week 1 - Wednesday - outside.tcpdump",
+    -- "DARPA 1999 - Week 1 - Thursday - inside.tcpdump",
+    -- "DARPA 1999 - Week 1 - Thursday - outside.tcpdump",
+    -- "DARPA 1999 - Week 1 - Friday - inside.tcpdump",
+    -- "DARPA 1999 - Week 1 - Friday - outside.tcpdump"]
 
 --------------------------------------------------------------------------------
 -- DATABASE ACCESS
@@ -62,7 +62,7 @@ readPackets dumpfilepath packets handler = do
     handle <- openOffline dumpfilepath
     dispatchBS handle packets (\h b -> readAPacket h b handler)
 
-readAPacket :: B.ByteString -> (Either (TCP.Packet String) (UDP.Packet String) -> IO ()) -> IO ()
+readAPacket :: PktHdr -> B.ByteString -> (Either (TCP.Packet String) (UDP.Packet String) -> IO ()) -> IO ()
 readAPacket h b handler = do
     let ws = B.unpack b
     let c = listArray (0, length ws-1) ws :: Chunk
